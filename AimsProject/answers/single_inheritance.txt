@@ -1,0 +1,4 @@
+- Java chỉ hỗ trợ đơn kế thừa (một lớp con chỉ kế thừa từ một lớp cha duy nhất) là để tránh:
++> Vấn đề xảy ra khi một lớp (D) kế thừa từ hai lớp cha (B và C), mà cả hai lớp cha đó lại cùng kế thừa từ một lớp gốc (A).
+ Nếu lớp D gọi một phương thức methodX() mà B và C đều kế thừa từ A nhưng đã ghi đè (override) theo cách khác nhau,Java sẽ không biết phải chọn phiên bản methodX() nào để thực thi.
+ =>Vì vậy để an toàn trong việc xác định nguồn gốc của phương thức, Java cấm đa kế thừa giữa các lớp.

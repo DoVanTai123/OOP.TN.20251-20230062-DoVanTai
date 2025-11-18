@@ -1,0 +1,3 @@
+- Từ khóa super dùng để tham chiếu đến thể hiện (instance) của lớp cha trực tiếp (immediate parent class).
+-Trong trường hợp này, super(title, cost, category) được sử dụng để gọi đến constructor (phương thức khởi tạo) của lớp cha Media .
+-Nó cho phép lớp con (Book) khởi tạo các thuộc tính đã được thừa hưởng từ lớp cha (title, category, cost) mà không cần phải viết lại logic khởi tạo đó.
