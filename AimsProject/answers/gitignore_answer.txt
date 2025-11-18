@@ -1,0 +1,35 @@
+Câu 1: Tại sao những đường dẫn .settings, bin, .classpath, .project nên được thêm vào .gitignore (nếu không thêm thì sao)?
+
+-Vì Các đường dẫn này là những file/thư mục không thuộc mã nguồn mà chỉ là: File cấu hình cá nhân của IDE Eclipse (.settings/, .project, .classpath)
+=> Mỗi máy có cấu hình khác nhau, nếu commit lên Git:
++ dễ gây xung đột khi làm việc nhóm
++ làm project bị phụ thuộc vào một IDE cụ thể
++ người khác pull về có thể bị lỗi do khác phiên bản JDK, workspace…
+
+Và Thư mục biên dịch (bin/) chứa file .class sinh tự động, không bao giờ được đưa vào repo vì: repo bị nặng, thay đổi liên tục gây noise commit, file này có thể tạo lại bất cứ lúc nào từ file .java.
+=> Nếu không thêm vào .gitignore:
+Repo sẽ bị “bẩn”, chứa file rác, dễ sinh lỗi khi làm việc nhóm, và gây xung đột không cần thiết ở các file cấu hình.
+
+Câu 2: Nếu sử dụng IntelliJ IDEA hoặc VSCode, những đường dẫn nào sẽ được thêm vào .gitignore?
+
+-)IntelliJ IDEA:
+.idea/ — thư mục cấu hình của IntelliJ
+*.iml — file module của IntelliJ
+out/ — thư mục chứa file .class sau khi build
+
+-)VSCode:
+.vscode/ — thư mục chứa cấu hình workspace của VSCode
+
+-)Ngoài ra, các tool build khác cũng cần ignore nếu được sử dụng:
++>target/ (nếu dùng Maven)
++>build/ (nếu dùng Gradle)
+
+Câu 3: Nếu đã lỡ commit các file tạm lên Git và đã thêm chúng vào .gitignore, làm thế nào để Git ngừng theo dõi chúng mà không xóa khỏi máy?
+
+- Việc thêm vào .gitignore không đủ, vì Git đã theo dõi các file đó từ trước.
+- Cần thực hiện các bước sau:
++>Thêm đường dẫn vào .gitignore
++>Xóa file khỏi chỉ mục Git nhưng không xóa trên máy: git rm -r --cached <đường_dẫn>
++>Commit thay đổi: git commit -m "<message>""
++>Push lên GitHub: git push
+Sau đó Git sẽ ngừng theo dõi các file này và .gitignore sẽ hoạt động đúng.
