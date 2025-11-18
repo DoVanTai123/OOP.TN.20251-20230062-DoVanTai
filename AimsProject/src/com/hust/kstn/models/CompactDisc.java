@@ -3,26 +3,14 @@ package com.hust.kstn.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactDisc {
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
+public class CompactDisc extends Disc {
+
     private String artist;
-    private String director;
     private List<Track> tracks = new ArrayList<>();
 
-    private static int nbCompactDiscs = 0;
-
     public CompactDisc(String title, String category, String artist, String director, float cost) {
-        this.title = title;
-        this.category = category;
+        super(title, category, director, 0, cost);
         this.artist = artist;
-        this.director = director;
-        this.cost = cost;
-
-        nbCompactDiscs++;
-        this.id = nbCompactDiscs;
     }
 
     public void addTrack(Track track) {
@@ -56,8 +44,7 @@ public class CompactDisc {
     }
 
     public void play() {
-        System.out.println("--- Playing CD: " + this.title + " ---");
-        System.out.println("CD Artist: " + this.artist);
+        System.out.println("--- Playing CD: " + this.getTitle() + " ---");
         System.out.println("CD total length: " + this.totalLength());
         for (Track track : tracks) {
             track.play();
@@ -66,6 +53,6 @@ public class CompactDisc {
 
     @Override
     public String toString() {
-        return "CD - " + title + " - " + category + " - " + artist + " - " + director + " - " + totalLength() + ": " + cost + " $";
+        return "CD: " + super.toString() + " - Artist: " + this.artist;
     }
 }
