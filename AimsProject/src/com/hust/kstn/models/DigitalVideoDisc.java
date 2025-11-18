@@ -64,4 +64,8 @@ public class DigitalVideoDisc {
         nbDigitalVideoDiscs++;
         this.id = nbDigitalVideoDiscs;
     }
+    @Override
+    public String toString() {
+        return "DVD[" + id + "] - " + title + " - " + cost + " $ - " + length + " - " + category + " - " + director;
+    }
 }

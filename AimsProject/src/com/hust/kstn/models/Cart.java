@@ -78,12 +78,9 @@ public class Cart {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
         for (int i = 0; i < qtyOrdered; i++) {
-            // (Chúng ta sẽ sửa lại hàm in này ở Mục 2.3)
-            System.out.println((i + 1) + ". DVD - [Title]: " + itemOrdered[i].getTitle() +
-                    " - [Cost]: " + itemOrdered[i].getCost() + "$");
+            System.out.println(itemOrdered[i].toString());
         }
-        System.out.println("Total items: " + qtyOrdered);
-        System.out.println("Total cost: " + calculateTotalCost() + "$");
+        System.out.println("Total cost: " + calculateTotalCost());
         System.out.println("***************************************************");
     }
 }
