@@ -1,71 +1,30 @@
 package com.hust.kstn.models;
 
-public class DigitalVideoDisc {
+public class DigitalVideoDisc extends Disc {
 
-    private static int nbDigitalVideoDiscs = 0;
-
-    private int id;
-
-    private String title;
-    private String category;
-    private String director;
-    private int length;
-    private double cost;
-
-    public int getId() {
-        return id;
+    public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
+        super(title, category, director, length, (float)cost);
     }
-    public String getTitle() {
-        return title;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public String getDirector() {
-        return director;
-    }
-    public int getLength() {
-        return length;
-    }
-    public double getCost() {
-        return cost;
-    }
-
 
     public DigitalVideoDisc(String title) {
-        this.title = title;
-        nbDigitalVideoDiscs++;
-        this.id = nbDigitalVideoDiscs;
+        super(title, null, null, 0, 0);
     }
 
-    public DigitalVideoDisc(String category, String title, double cost) {
-        this.category = category;
-        this.title = title;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        this.id = nbDigitalVideoDiscs;
+    public DigitalVideoDisc(String title, String category, double cost) {
+        super(title, category, null, 0, (float)cost);
     }
 
     public DigitalVideoDisc(String director, String category, String title, double cost) {
-        this.director = director;
-        this.category = category;
-        this.title = title;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        this.id = nbDigitalVideoDiscs;
+        super(title, category, director, 0, (float)cost);
     }
 
-    public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.length = length;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        this.id = nbDigitalVideoDiscs;
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
+
     @Override
     public String toString() {
-        return "DVD[" + id + "] - " + title + " - " + cost + " $ - " + length + " - " + category + " - " + director;
+        return "DVD: " + super.toString();
     }
 }
