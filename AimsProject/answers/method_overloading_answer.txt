@@ -1,0 +1,5 @@
+Câu hỏi: Chuyện gì xảy ra khi thêm phương thức này, tại sao? Bạn lựa chọn phương án nào
+để giải quyết?
+- Trình biên dịch Java sẽ báo lỗi "Duplicate method" (Trùng lặp phương thức).
+Vì Trong Java, tham số varargs (Type... name) thực chất được cài đặt như một mảng (Type[] name). Do đó, phương thức addDVD(DigitalVideoDisc... discs) y hệt như addDVD(DigitalVideoDisc[] discs) mà ta vừa viết. Java không thể phân biệt được hai phương thức này.
+=> Chúng ta chỉ nên giữ lại một trong hai. Tốt nhất là sử dụng varargs (...) vì nó linh hoạt hơn: nó chấp nhận cả mảng lẫn danh sách các tham số rời rạc.
