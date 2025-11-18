@@ -1,0 +1,19 @@
+1. -Phương thức swap không hoạt động vì Java sử dụng cơ chế Truyền Tham Trị (Pass by Value).
+   -Khi swap(s1, s2) được gọi, Java sao chép giá trị của tham chiếu s1 và s2 vào hai biến cục bộ o1 và o2 (nằm trên vùng nhớ Stack của hàm swap).
+   -Lệnh hoán đổi o1 = o2 chỉ làm thay đổi việc o1 và o2 trỏ vào đâu trong phạm vi hàm swap, hoàn toàn không tác động đến các biến gốc s1 và s2 ở hàm main.
+   -Do đó, sau khi hàm kết thúc, s1 và s2 vẫn trỏ đến các đối tượng cũ, nội dung không thay đổi.
+   => Java truyền tham tri
+2.Chúng ta phải tráo đổi các giá trị thuộc tính bên trong đối tượng thông qua các phương thức setter:
+Mã code:
+  public static void swap(Student s1, Student s2) {
+      String tmpName = s1.getName();
+      int tmpId = s1.getStudentId();
+
+      s1.setName(s2.getName());
+      s1.setStudentId(s2.getStudentId());
+
+      s2.setName(tmpName);
+      s2.setStudentId(tmpId);
+  }
+
+3.Ví dụ sở đồ như trong ảnh heap_diagram
