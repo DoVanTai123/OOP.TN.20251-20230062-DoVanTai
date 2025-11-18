@@ -19,6 +19,10 @@ public class Aims {
         anOrder.addDVD(dvd2);
         anOrder.addDVD(dvd3);
 
+        System.out.println("DVD 1 ID: " + dvd1.getId());
+        System.out.println("DVD 2 ID: " + dvd2.getId());
+        System.out.println("DVD 3 ID: " + dvd3.getId());
+
         System.out.println("--- Cart ban đầu ---");
         anOrder.print();
 

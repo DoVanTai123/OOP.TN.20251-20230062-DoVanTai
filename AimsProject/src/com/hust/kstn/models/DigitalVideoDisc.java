@@ -2,37 +2,66 @@ package com.hust.kstn.models;
 
 public class DigitalVideoDisc {
 
+    private static int nbDigitalVideoDiscs = 0;
+
+    private int id;
+
     private String title;
     private String category;
     private String director;
-    private double cost;
     private int length;
+    private double cost;
 
-
-    public String getTitle() { return title; }
-    public String getCategory() { return category; }
-    public String getDirector() { return director; }
-    public double getCost() { return cost; }
-    public int getLength() { return length; }
+    public int getId() {
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public String getDirector() {
+        return director;
+    }
+    public int getLength() {
+        return length;
+    }
+    public double getCost() {
+        return cost;
+    }
 
 
     public DigitalVideoDisc(String title) {
         this.title = title;
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String category, String title, double cost) {
-        this(title);
         this.category = category;
+        this.title = title;
         this.cost = cost;
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String director, String category, String title, double cost) {
-        this(category, title, cost);
         this.director = director;
+        this.category = category;
+        this.title = title;
+        this.cost = cost;
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-        this(director, category, title, cost);
+        this.title = title;
+        this.category = category;
+        this.director = director;
         this.length = length;
+        this.cost = cost;
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 }
